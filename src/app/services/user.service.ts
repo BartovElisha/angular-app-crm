@@ -15,7 +15,6 @@ export class UserService {
       return true;
     }
     this.route.navigate(['/login']);
-
     return false;
   }
 
