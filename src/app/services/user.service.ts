@@ -1,27 +1,58 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private route: Router) { }
+  user:firebase.auth.UserCredential | undefined;
 
-  private _isLoggedIn:boolean = false;
+  
+  constructor(private route: Router,public auth: AngularFireAuth) { }
 
-  isLoggedIn():boolean {
-    if(this._isLoggedIn) {
-      return true;
+  private _isLoggedIn:boolean | null = null;
+
+  isLoggedIn() : Promise<boolean> {
+   return new Promise ((resolve,reject) => {
+        if (this._isLoggedIn !== null) {
+          resolve(this._isLoggedIn);
+        }
+        else {
+          this.auth.onAuthStateChanged(
+            user => {this.userStateChanged(user);
+                    if (user) {
+                      resolve(true);
+                    }else {
+                      resolve(false);
+                    }}
+          )
+        }
+   })
+  }
+
+  userStateChanged(user: firebase.User | null){
+    if (user) {
+      this._isLoggedIn = true;
+      this.route.navigate(['/dashboard']);
+      console.log(user);
     }
-    this.route.navigate(['/login']);
-    return false;
+    else {
+      this._isLoggedIn = false;
+      this.route.navigate(['/login']);
+    }
   }
 
   login(email: string, password: string) {
-    console.log(email, password);
-    this._isLoggedIn = true;
-    this.route.navigate(['/dashboard']);
+    return this.auth.signInWithEmailAndPassword(email, password).then((user:firebase.auth.UserCredential) => {
+      this.user = user;
+      console.log(user);
+      this._isLoggedIn = true;
+    })
   }
-  
+
+  logout() {
+    this.auth.signOut() }
 }
