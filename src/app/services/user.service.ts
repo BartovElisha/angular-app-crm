@@ -46,7 +46,8 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    return this.auth.signInWithEmailAndPassword(email, password).then((user:firebase.auth.UserCredential) => {
+    return this.auth.signInWithEmailAndPassword(email, password)
+    .then((user:firebase.auth.UserCredential) => {
       this.user = user;
       console.log(user);
       this._isLoggedIn = true;
@@ -54,5 +55,6 @@ export class UserService {
   }
 
   logout() {
-    this.auth.signOut() }
+    this.auth.signOut(); 
+  }
 }

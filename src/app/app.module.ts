@@ -12,10 +12,12 @@ import { AccordionSidebarComponent } from './components/accordion-sidebar/accord
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { TestFirebaseComponent } from './components/test-firebase/test-firebase.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { AngularFireModule } from '@angular/fire/compat';
     DashboardComponent,
     AccordionSidebarComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    TestFirebaseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     FormsModule,
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
