@@ -1,0 +1,37 @@
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="firstName">First Name</label>
+      <input type="string" class="form-control" id="firstName" placeholder="Enter first Name"
+        [(ngModel)]="customer.firstName" name="firstName">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="lastName">Last Name</label>
+      <input type="string" class="form-control" id="lastName" placeholder="Enter last Name"
+        [(ngModel)]="customer.lastName" name="lastName">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" [(ngModel)]="customer.email"
+        name="email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="phone">Phone</label>
+      <input type="string" class="form-control" id="phone" placeholder="Enter phone Number"
+        [(ngModel)]="customer.phoneNumber" name="phoneNumber">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="string" class="form-control" id="inputAddress" placeholder="Enter address"
+      [(ngModel)]="customer.address" name="address">
+  </div>
+  <div class="form-group">
+    <label for="noter">Notes</label>
+    <textarea type="text" class="form-control" id="notes" placeholder="Enter notes" [(ngModel)]="customer.notes"
+      name="notes" rows="5"></textarea>
+  </div>
+  <button (click)="save()" type="submit" class="btn btn-success">Save</button>
+</form>

@@ -18,6 +18,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { TestFirebaseComponent } from './components/test-firebase/test-firebase.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { CustomersComponent } from './components/customers/customers.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { TestFirebaseComponent } from './components/test-firebase/test-firebase.
     AccordionSidebarComponent,
     NavbarComponent,
     FooterComponent,
-    TestFirebaseComponent
+    TestFirebaseComponent,
+    EditUserComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
