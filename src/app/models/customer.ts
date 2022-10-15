@@ -45,5 +45,21 @@ export class Customer {
             this.createdDate = createdDate;
             this.status = status;    
     }
+
+    toFirebase() {
+        return {
+            id:this.id,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            phoneNumber: this.phoneNumber,
+            address: this.address,
+            notes: this.notes,
+            createdDate: this.createdDate,
+            status: this.status
+        }      
+    }
 }
+
+
 

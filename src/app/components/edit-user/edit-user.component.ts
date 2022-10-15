@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
+import { CustomerService } from 'src/app/services/customer.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class EditUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cs: CustomerService) { }
 
   customer: Customer = new Customer();
 
@@ -25,6 +26,17 @@ export class EditUserComponent implements OnInit {
       this.errorMessage('Last Name must be at least 3 characters long');
       return;
     }
+
+    this.cs.createCustomer(this.customer)
+    .then(() => {
+      Swal.fire(
+        'Customer Created Successfully !!!',
+        'You clicked the button!',
+        'success');
+    })
+    .catch((error:any) => {
+      this.errorMessage(error.message);
+    });
    
     console.log(this.customer);
   }
