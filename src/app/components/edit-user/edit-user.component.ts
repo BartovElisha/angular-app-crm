@@ -29,6 +29,7 @@ export class EditUserComponent implements OnInit {
 
     this.cs.createCustomer(this.customer)
     .then(() => {
+      this.customer = new Customer();
       Swal.fire(
         'Customer Created Successfully !!!',
         'You clicked the button!',

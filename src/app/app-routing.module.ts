@@ -15,7 +15,6 @@ const routes: Routes = [
       {path: 'edit', component: EditUserComponent}
     ]},
   {path: 'login', component: LoginComponent},
-  {path: 'edit', component: EditUserComponent},
   {path: 'testdb', component: TestFirebaseComponent}
 ];
 

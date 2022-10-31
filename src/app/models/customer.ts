@@ -43,7 +43,7 @@ export class Customer {
             this.address = address;
             this.notes = notes;
             this.createdDate = createdDate;
-            this.status = status;    
+            this.status = status;  
     }
 
     toFirebase() {
@@ -59,6 +59,19 @@ export class Customer {
             status: this.status
         }      
     }
+
+    static fromFirebaseToClass(data:any) {
+        return new Customer(
+            data.id,
+            data.firstName || '',
+            data.lastName || '',
+            data.email || '',
+            data.phoneNumber || '',
+            data.address || '',
+            data.notes || '',
+            data.createdDate || '',
+            data.status || 0
+        )}    
 }
 
 
