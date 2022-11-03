@@ -42,4 +42,8 @@ export class CustomerService {
       console.log(error);
     });
   }
+
+  removeCustomerById(id: number) {
+    return this.afs.doc(this.customerCollection+"/"+id).set({status:0},{merge:true})
+  }
 }
